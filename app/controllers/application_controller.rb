@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
 
   # サインイン後の遷移先メソッド（デフォルト:rootパス）
   def after_sign_in_path_for(resource)
-    about_path
+    post_images_path
   end
 
   # サインアウト後の遷移先メソッド（デフォルト:rootパス）
