@@ -5,9 +5,17 @@ class PostImage < ApplicationRecord
 
   # Userモデル関連付け
   belongs_to :user
-  
+
   # PostCommentモデルと関連付け
   has_many :post_comments, dependent: :destroy
+
+  # Favoriteモデルと関連付け
+  has_many :favorites, dependent: :destroy
+
+
+  def favorited_by?(user)
+    favorites.exists?(user_id: user.id)
+  end
 
   # 画像表示関数の定義
   def get_image
