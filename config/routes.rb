@@ -5,7 +5,11 @@ Rails.application.routes.draw do
   get 'homes/top'
   get 'homes/about' => 'homes#about', as: 'about'
 
-  resources :post_images, only: [:new, :index, :show, :create, :destroy]
+  resources :post_images, only: [:new, :index, :show, :create, :destroy] do
+    # 各投稿画像に対してコメントを結びつけ
+    resources :post_comments, only: [:create, :destroy]
+  end
+
   resources :users, only: [:show, :edit, :update]
 
 

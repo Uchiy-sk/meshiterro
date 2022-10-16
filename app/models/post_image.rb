@@ -5,6 +5,9 @@ class PostImage < ApplicationRecord
 
   # Userモデル関連付け
   belongs_to :user
+  
+  # PostCommentモデルと関連付け
+  has_many :post_comments, dependent: :destroy
 
   # 画像表示関数の定義
   def get_image
