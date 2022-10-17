@@ -12,6 +12,10 @@ class PostImage < ApplicationRecord
   # Favoriteモデルと関連付け
   has_many :favorites, dependent: :destroy
 
+  # バリデーション設定
+  validates :shop_name, presence: true
+  validates :image, presence: true
+
 
   def favorited_by?(user)
     favorites.exists?(user_id: user.id)
